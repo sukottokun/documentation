@@ -8,13 +8,13 @@ layout: terminuspage
 permalink: docs/:basename/
 ---
 
-Our command line interface, Terminus, provides advanced interaction with Pantheon. Terminus enables you to do everything in a terminal that you can do in the Dashboard, and more.
+Our command line interface, Terminus, provides advanced interaction with Pantheon. Terminus enables you to do almost everything in a terminal that you can do in the Dashboard, and much more.
 
 <a href="/docs/terminus/install">Install Terminus</a> for Linux / Mac OSX or Windows.
 
 ## Using Terminus
 
-You can use Terminus to perform all of the operations you do on the Dashboard, including:  
+Use Terminus to perform these and other operations:  
 
 - Creating a new site
 - Creating and deleting Multidev environments
@@ -28,6 +28,8 @@ Terminus is open source! View the project on [GitHub](https://github.com/pantheo
 ## Alpha Support
 Need help with Terminus Alpha? [Open an issue on Github](https://github.com/pantheon-systems/terminus/issues/new) to submit Alpha feedback/bugs. For non-feedback/bugs and questions around general Alpha usage, email terminus.alpha@pantheon.io
 
+## Clearing Redis Cache
+Click **Clear Caches** within the target environment on the Site Dashboard or use the [Redis command-line client](/docs/redis/#clear-cache) to clear Redis cache.
 
 <div class="terminus-pager">
   <hr>
