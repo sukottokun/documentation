@@ -148,7 +148,7 @@ To use HTTPS for everything except some specific pages, such as an RSS feed:
       // Do not require HTTPS for specific pages.
       if (in_array($_SERVER['REQUEST_URI'], array('/rss.xml'))) {
         // Check if HTTPS is enabled.
-        if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'ON') {
+        if (isset($_SERVER['HTTP_X_SSL']) && $_SERVER['HTTP_X_SSL'] == 'ON') {
           $redirect_location = 'http://' . $redirect_domain . $_SERVER['REQUEST_URI'];
         }
       }
