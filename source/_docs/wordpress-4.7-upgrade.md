@@ -28,6 +28,8 @@ All of this behavior and more is available in the plugin [Pantheon Advanced Page
 
 Without the [Pantheon Advanced Page Cache](https://wordpress.org/plugins/pantheon-advanced-page-cache/) plugin, pages will expire by default from cache after 10 minutes (600 seconds). In order to have new content appear immediately to anonymous visitors you will need to install the [Pantheon Advanced Page Cache](https://wordpress.org/plugins/pantheon-advanced-page-cache/) plugin.
 
+**Note:** If you have the Cloudflare WordPress plugin installed you will need to diable the "Automatic cache management" option or the admin toolbar will not be displayed.
+
 ## Test Before Deploying Live
 
 In either case, **test the changes in your site's Test environment before deploying Live**. If you have any questions, please reach out to support, or file a bug or feature request directly at [https://github.com/pantheon-systems/pantheon-advanced-page-cache/issues](https://github.com/pantheon-systems/pantheon-advanced-page-cache/issues).
