@@ -259,6 +259,11 @@ define('AUTOPTIMIZE_CACHE_CHILD_DIR','/uploads/autoptimize/');
 ```
 For additional details, see the [Autoptimize FAQ](https://wordpress.org/plugins/autoptimize/faq). An alternative solution is to [create a symbolic link](/docs/assuming-write-access/#create-a-symbolic-link).
 
+### [Cloudflare](https://wordpress.org/plugins/cloudflare/)
+**Issue**: Admin toolbar doesn't display when Pantheon Advanced Page Cache is enabled.
+
+**Solution**: Disable the Cloudflare plugin `automatic cache management` option in the plugin settings.
+
 ### [Contact Form 7](https://wordpress.org/plugins/contact-form-7/)
 **Issue**: This plugin utilizes a static value, `$_SERVER['SERVER_NAME']`, instead of `$_SERVER['HTTP_HOST']` which is generated dynamically.
 
