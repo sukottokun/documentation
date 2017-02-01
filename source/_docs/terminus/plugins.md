@@ -7,7 +7,7 @@ layout: terminuspage
 permalink: docs/terminus/:basename/
 ---
 
-Extend the functionality of Terminus and add commands by installing third party plugins.
+Extend the functionality of Terminus and add commands by installing third party plugins Those familiar and comfortable with Git or Composer may prefer advanced installation methods provided below.
 
 <div class="alert alert-info">
 <h3 class="info">Note</h3>
