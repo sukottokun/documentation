@@ -114,9 +114,9 @@ After submitting your certificates, you'll see a confirmation message:
 
 ## DNS
 
-There are two options for configuring your DNS when you are using HTTPS. The platform has support for IPv4 (A records) and IPv6 (AAAA record).
+There are two options for configuring your DNS when you are using HTTPS. The platform has support for IPv4 (`A` records) and IPv6 (`AAAA` record). IPv4 is the current standard for web traffic, but will be replaced with IPv6 in the coming years.
 
-We recommend using an IPv4 address, unless you are familiar with and understand IPv6.
+If you have a CNAME record in place for your domain, you **must** replace it with an `A` or `AAAA` record when enabling HTTPS.
 
 ## Test HTTPS
 
