@@ -32,7 +32,43 @@ Enable Redis cache server from your Pantheon Site Dashboard by going to **Settin
 
 For detailed information, see [Installing Redis on WordPress](/docs/wordpress-redis).
 
+### Drupal 8 Sites
+
+1. Enable the Redis cache server from your Pantheon Site Dashboard by going to **Settings** > **Add Ons** > **Add**.
+
+2. Add the [Redis](http://drupal.org/project/redis) module from Drupal.org.
+
+3. Edit `sites/default/settings.php` to add the Redis cache configuration. These are the **mandatory**, required Redis configurations for every site.
+
+    ```php
+    // Configure Redis
+
+    if (defined('PANTHEON_ENVIRONMENT')) {
+      // Include the Redis services.yml file. Adjust the path if you installed to a contrib or other subdirectory.
+      $settings['container_yamls'][] = 'modules/redis/example.services.yml';
+
+      //phpredis is built into the Pantheon application container.
+      $settings['redis.connection']['interface'] = 'PhpRedis';
+      // These are dynamic variables handled by Pantheon.
+      $settings['redis.connection']['host']      = $_ENV['CACHE_HOST'];
+      $settings['redis.connection']['port']      = $_ENV['CACHE_PORT'];
+      $settings['redis.connection']['password']      = $_ENV['CACHE_PASSWORD'];
+
+      $settings['cache_prefix']['default'] = $_ENV['PANTHEON_SITE_NAME']; // Prefix data in Redis with the environment it's running in.
+      $settings['cache']['default'] = 'cache.backend.redis'; // Use Redis as the default cache.
+
+      // Always set the fast backend for bootstrap, discover and config, otherwise this gets lost when redis is enabled.
+      $settings['cache']['bins']['bootstrap'] = 'cache.backend.chainedfast';
+      $settings['cache']['bins']['discovery'] = 'cache.backend.chainedfast';
+      $settings['cache']['bins']['config'] = 'cache.backend.chainedfast';
+    }
+    ```
+
+4. On you dev site, navigate to `/admin/reports/status` and confirm the **REDIS** line says "
+Connected, using the PhpRedis client."
+
 ### Drupal 7.x and 6.x Sites
+
 1. Enable the Redis cache server from your Pantheon Site Dashboard by going to **Settings** > **Add Ons** > **Add**.
 
 2. Add the [Redis](http://drupal.org/project/redis) module from Drupal.org.
@@ -70,7 +106,7 @@ For detailed information, see [Installing Redis on WordPress](/docs/wordpress-re
         }
 
     <div class="alert alert-info">
-    <h4 class="info">Note</h4><p>Distributions may vary in their directory structure. You will need to check the path at which the Redis module resides and change any paths in the snippet below to match your path.</p></div>
+    <h4 class="info">Note</h4><p>Distributions may vary in their directory structure. You will need to check the path at which the Redis module resides and change any paths in the snippet above to match your path.</p></div>
 
 5. Optional configurations for `sites/default/settings.php`. Only choose one, as they will conflict:
 
@@ -110,9 +146,6 @@ For detailed information, see [Installing Redis on WordPress](/docs/wordpress-re
   - For Drupal 7, visit `/admin/config/development/performance/redis` and open **Connection Information**.
 
   - For Drupal 6, visit  `/admin/settings/performance/cache-backend` and you should see the available backends and their statuses.
-
-### Drupal 8 Sites
-You can try out the beta version of the [Redis](https://www.drupal.org/project/redis) module on Drupal 8, however it is not officially supported at this time.
 
 ## Use the Redis Command-Line Client
 
