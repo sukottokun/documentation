@@ -67,13 +67,11 @@ For detailed information, see [Installing Redis on WordPress](/docs/wordpress-re
 4. On you dev site, navigate to `/admin/reports/status` and confirm the **REDIS** line says "
 Connected, using the PhpRedis client."
 
-### Drupal 7.x and 6.x Sites
+### Drupal 7 Sites
 
 1. Enable the Redis cache server from your Pantheon Site Dashboard by going to **Settings** > **Add Ons** > **Add**.
 
 2. Add the [Redis](http://drupal.org/project/redis) module from Drupal.org.
-
- As there is no Redis module for Drupal 6.x, you need to install the [Cache Backport](https://drupal.org/project/cache_backport) module to use Redis with Drupal 6.x. See [more information](/docs/redis/#drupal-6-cache-backport) in the Troubleshooting section below.
 
 3. Ignore the directions bundled with the Redis module. Pantheon automatically manages the following `settings.php`/`$conf`/`variable_get` items for you:
  - `redis_client_host`
@@ -141,11 +139,7 @@ Connected, using the PhpRedis client."
 
 7. Verify Redis is enabled by going to the Dashboard and clicking **Connection Info**. If you see the Redis cache connection string, Redis is enabled.
 
-8. Connect to test that it's working:
-
-  - For Drupal 7, visit `/admin/config/development/performance/redis` and open **Connection Information**.
-
-  - For Drupal 6, visit  `/admin/settings/performance/cache-backend` and you should see the available backends and their statuses.
+8. Visit `/admin/config/development/performance/redis` and open **Connection Information** to verify the connection.
 
 ## Use the Redis Command-Line Client
 
