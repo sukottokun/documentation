@@ -52,15 +52,14 @@ For detailed information, see [Installing Redis on WordPress](/docs/wordpress-re
       // These are dynamic variables handled by Pantheon.
       $settings['redis.connection']['host']      = $_ENV['CACHE_HOST'];
       $settings['redis.connection']['port']      = $_ENV['CACHE_PORT'];
-      $settings['redis.connection']['password']      = $_ENV['CACHE_PASSWORD'];
+      $settings['redis.connection']['password']  = $_ENV['CACHE_PASSWORD'];
 
-      $settings['cache_prefix']['default'] = $_ENV['PANTHEON_SITE_NAME']; // Prefix data in Redis with the environment it's running in.
       $settings['cache']['default'] = 'cache.backend.redis'; // Use Redis as the default cache.
 
       // Always set the fast backend for bootstrap, discover and config, otherwise this gets lost when redis is enabled.
       $settings['cache']['bins']['bootstrap'] = 'cache.backend.chainedfast';
       $settings['cache']['bins']['discovery'] = 'cache.backend.chainedfast';
-      $settings['cache']['bins']['config'] = 'cache.backend.chainedfast';
+      $settings['cache']['bins']['config']    = 'cache.backend.chainedfast';
     }
     ```
 
