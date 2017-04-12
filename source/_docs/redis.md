@@ -105,40 +105,11 @@ Connected, using the PhpRedis client."
     <div class="alert alert-info">
     <h4 class="info">Note</h4><p>Distributions may vary in their directory structure. You will need to check the path at which the Redis module resides and change any paths in the snippet above to match your path.</p></div>
 
-5. Optional configurations for `sites/default/settings.php`. Only choose one, as they will conflict:
+7. Enable the module via `admin/build/modules`. This is necessary for cache clearing to work in all cases.
 
- - **Option A**: Higher performance for smaller page counts.<br>
- This technique does not execute full Drupal bootstrapping and does not invoke the database, which ignores database checks such as Drupal's IP blacklist. Do not use this method if your site requires the `hoot_boot` process to be run with each page.
+8. Verify Redis is enabled by going to the Dashboard and clicking **Connection Info**. If you see the Redis cache connection string, Redis is enabled.
 
-        // Optional Pantheon Redis settings.
-        // Higher performance for smaller page counts.
-        if (defined('PANTHEON_ENVIRONMENT')) {
-          // High performance - no hook_boot(), no hook_exit(), ignores Drupal IP blacklists.
-          $conf['page_cache_without_database'] = TRUE;
-          $conf['page_cache_invoke_hooks'] = FALSE;
-          // Explicitly set page_cache_maximum_age as database won't be available.
-          $conf['page_cache_maximum_age'] = 900;
-        }
-
- - **Option B**: Higher hit rate for larger page counts.
- This technique avoids evictions due to Redis space limitations when your site has a large quantity of pages to cache. This option will conflict with Option A, which skips the database entirely; do not use both at the same time.
-
-     <div class="alert alert-danger">
-     <h4 class="info">Warning</h4><p>This optional code is specifically for sites with large quantities of simple pages. Otherwise, it will result in poor performance.</p>
-     </div>
-
-        // Optional Pantheon Redis settings.
-        // Higher performance for larger page counts.
-        if (defined('PANTHEON_ENVIRONMENT')) {
-          // Use the database for cached HTML.
-          $conf['cache_class_cache_page'] = 'DrupalDatabaseCache';
-        }
-
-6. Enable the module via `admin/build/modules`. This is necessary for cache clearing to work in all cases.
-
-7. Verify Redis is enabled by going to the Dashboard and clicking **Connection Info**. If you see the Redis cache connection string, Redis is enabled.
-
-8. Visit `/admin/config/development/performance/redis` and open **Connection Information** to verify the connection.
+9. Visit `/admin/config/development/performance/redis` and open **Connection Information** to verify the connection.
 
 ## Use the Redis Command-Line Client
 
